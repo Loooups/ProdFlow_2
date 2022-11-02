@@ -1,0 +1,18 @@
+{
+  "name": "new-prod-flow",
+  "version": "1.0.0",
+  "description": "upskilling project",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moncef.f",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "github:mysqljs/mysql",
+    "nodemon": "^2.0.20"
+  }
+}
