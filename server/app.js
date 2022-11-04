@@ -19,7 +19,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-// i will use jason for all application
+// i will use json for all application
 
 app.use("/sites", sitesRoutes);
 

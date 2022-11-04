@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS NEWPRODFLOW;
+# DROP DATABASE NEWPRODFLOW;
 -- Destruction des tables
 create database NEWPRODFLOW;
 use NEWPRODFLOW;
@@ -14,16 +14,17 @@ CREATE TABLE Site (
    Id_site int NOT NULL auto_increment,
    Name varchar(200) NOT NULL,
    Status varchar(200) NOT NULL,
+   Employees int NOT NULL,
    PRIMARY KEY (Id_site)
 );
 
 
 --  Contenu de la table 'Site'
 
-INSERT INTO Site (Name, status) VALUES('SAMFONY Aubervilliers','Active');
-INSERT INTO Site (Name, status) VALUES('SAMFONY Roubaix','Disabled');
-INSERT INTO Site (Name, status) VALUES('SAMFONY Mulhouse','Active');
-INSERT INTO Site (Name, status) VALUES('SAMFONY Metz', 'Disabled');
+INSERT INTO Site (Name, Status, Employees) VALUES('SAMFONY Ile-de-France', 'Active', 560);
+INSERT INTO Site (Name, Status, Employees) VALUES('SAMFONY North', 'Disabled', 710);
+INSERT INTO Site (Name, Status, Employees) VALUES('SAMFONY East','Active', 360);
+INSERT INTO Site (Name, Status, Employees) VALUES('SAMFONY West','Disabled', 260);
 
 --  --------------------------------------------------------
 
@@ -32,21 +33,22 @@ INSERT INTO Site (Name, status) VALUES('SAMFONY Metz', 'Disabled');
 
 CREATE TABLE Address (
 Id_address int not null auto_increment,
-Id_site int,
+Id_site int NOT NULL,
 Address varchar(50),
 City varchar(30),
+ZipCode int NOT NULL,
 PRIMARY KEY (Id_address),
-FOREIGN KEY (Id_Site) REFERENCES Site(Id_site)
+CONSTRAINT fk_site_id1 FOREIGN KEY (Id_site) REFERENCES Site(Id_site)
 );
 
 
 --  Contenu de la table 'Address'
 
 
-INSERT INTO Address (Address, Id_site, City) VALUES( '10 Avenue de la Republique',1, 'Aubervilliers');
-INSERT INTO Address (Address, Id_site, City) VALUES( '17 Grand''place',2,  'Roubaix');
-INSERT INTO Address (Address, Id_site, City) VALUES( '2 rue Pierre et Marie Curie',3 , 'Mulhouse');
-INSERT INTO Address (Address, Id_site, City) VALUES( '1 place d''Armes-Jacques-François-Blondel ',4 ,'Metz');
+INSERT INTO Address (Address, Id_site, City, ZipCode) VALUES( '10 Avenue de la Republique',1, 'Aubervilliers',75005);
+INSERT INTO Address (Address, Id_site, City, ZipCode) VALUES( '17 Grand''place',2, 'Roubaix',59512);
+INSERT INTO Address (Address, Id_site, City, ZipCode) VALUES( '2 rue Pierre et Marie Curie',3 , 'Mulhouse',68200);
+INSERT INTO Address (Address, Id_site, City, ZipCode) VALUES( '1 place d''Armes-Jacques-François-Blondel ',4 ,'Nantes',44036);
 
 --  Structure de la table 'ProductionLine'
 
@@ -54,34 +56,24 @@ INSERT INTO Address (Address, Id_site, City) VALUES( '1 place d''Armes-Jacques-F
 CREATE TABLE ProductionLine (
    ID_line int NOT NULL auto_increment,
    Rate int,
-   Id_site int,
+   Id_site int NOT NULL,
    PRIMARY KEY (ID_line),
-   CONSTRAINT fk_site_id2 FOREIGN KEY (Id_Site) REFERENCES Site(Id_site)
+   CONSTRAINT fk_site_id2 FOREIGN KEY (Id_site) REFERENCES Site(Id_site)
 );
 
 
 --  Contenu de la table 'ProductionLine'
 
-
-INSERT INTO ProductionLine (Rate, Id_site) VALUES('36',1);
-INSERT INTO ProductionLine (Rate, Id_site) VALUES('46',2);
-INSERT INTO ProductionLine (Rate, Id_site) VALUES('56',3);
-INSERT INTO ProductionLine (Rate, Id_site) VALUES('66',4);
-
---  Structure de la table 'NumberOfEmployees'
+INSERT INTO ProductionLine (Rate, Id_site) VALUES( '36',1);
+INSERT INTO ProductionLine (Rate, Id_site) VALUES( '46',2);
+INSERT INTO ProductionLine (Rate, Id_site) VALUES( '56',3);
+INSERT INTO ProductionLine (Rate, Id_site) VALUES( '66',4);
 
 
-CREATE TABLE NumberOfEmployees (
-   Id_site int NOT NULL,
-   Employees int NOT NULL,
-   PRIMARY KEY (Id_site),
-   CONSTRAINT fk_site_id3 FOREIGN KEY (Id_Site) REFERENCES Site(Id_site)
-);
 
---  Contenu de la table 'NumberOfEmployees'
+COMMIT;
 
 
-INSERT INTO NumberOfEmployees (Id_site, Employees) VALUES (1 ,560);
-INSERT INTO NumberOfEmployees (Id_site, Employees)  VALUES (2 ,710);
-INSERT INTO NumberOfEmployees (Id_site, Employees)  VALUES (3 ,360);
-INSERT INTO NumberOfEmployees (Id_site, Employees)  VALUES (4 ,260);
+SELECT Name FROM Site;
+SELECT Name FROM Site WHERE Id_site=2;
+SELECT Name, Status, Employees, Address, City, ZipCode, ID_line, Rate FROM Site JOIN Address A ON Site.Id_site = A.Id_site JOIN ProductionLine ON Site.Id_site = ProductionLine.Id_site;

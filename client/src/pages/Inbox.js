@@ -1,12 +1,12 @@
 import React from "react";
 import Logo from "../components/Logo";
-import Navigation from "../components/Navigation";
+import NavBar from "../components/NavBar";
 
 const Inbox = () => {
   return (
     <div>
       <Logo />
-      <Navigation />
+      <NavBar />
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
         perspiciatis vitae pariatur ratione tempore cum nobis alias porro,

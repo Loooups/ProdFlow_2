@@ -1,20 +1,21 @@
 import React from "react";
 import AllAddress from "../components/AllAddress";
-import AllNumberOfEmployees from "../components/AllNumberOfEmployees";
+import AllInformations from "../components/AllInformations";
 import AllProductionLines from "../components/AllProductionLines";
 import AllSites from "../components/AllSites";
 import Logo from "../components/Logo";
-import Navigation from "../components/Navigation";
+import NavBar from "../components/NavBar";
 
 const ProductionSite = () => {
   return (
     <div>
       <Logo />
-      <Navigation />
-      <AllSites />
+      <NavBar />
+      {/* <Navigation /> */}
+      <AllInformations />
+      {/* <AllSites />
       <AllAddress />
-      <AllProductionLines />
-      <AllNumberOfEmployees />
+      <AllProductionLines /> */}
     </div>
   );
 };

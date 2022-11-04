@@ -1,19 +1,23 @@
-.sites {
-    display: inline-block;
+.allInformations {
+    display: flexbox;
     color:beige;
-    height: 10rem;
-    width: 30%;
     border-radius: 6px;
     transition: 0.3s;
-    border: solid grey 3px;
+    /* border: solid grey 3px; */
+    text-align: center;
 
 }
+
+.allInformations table {
+    margin: 0 auto;
+}
+
 h1 {
     font-size: 1rem;
   }
 
 .address {
-    display: inline-block;
+    display: flexbox;
     color:beige;
     height: 10rem;
     width: 30%;
@@ -24,7 +28,7 @@ h1 {
 }
 
 .productionLines {
-    display: inline-block;
+    display: flexbox;
     color:beige;
     height: 10rem;
     width: 30%;
@@ -35,7 +39,7 @@ h1 {
 }
 
 .numberOfEmployees {
-    display: inline-block;
+    display: flexbox;
     color:beige;
     height: 10rem;
     width: 30%;

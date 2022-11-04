@@ -12,11 +12,11 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/productionSite" element={<ProductionSite />} />
+        <Route path="/" element={<ProductionSite />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/inbox" element={<Inbox />} />
         <Route path="/notifications" element={<Notification />} />
-        {/* <Route path="/*" element={<NotFound />} /> */}
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
