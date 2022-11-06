@@ -28,8 +28,8 @@ const AllInformations = () => {
               <tr key={informations.Id_site}>
                 <td>{informations.Name}</td>
                 <td>
-                  {informations.Address} , {informations.City} ,
-                  {informations.ZipCode}
+                  {informations.Address} , {informations.ZipCode} ,
+                  {informations.City}
                 </td>
                 <td>
                   <button>{informations.Status}</button>

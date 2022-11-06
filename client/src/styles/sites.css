@@ -10,6 +10,12 @@
 
 .allInformations table {
     margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.allInformations th, td {
+    border:1px solid beige;
+    
 }
 
 h1 {
